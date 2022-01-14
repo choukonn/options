@@ -1,0 +1,57 @@
+<root>
+  <examinee>
+    <sid />
+    <my_number />
+    <id />
+    <name />
+    <name-kana />
+    <birthday />
+    <sex />
+    <bloodtype />
+    <contact>
+      <send_zip />
+      <send_addr />
+      <send_addr_sub />
+      <zip1 />
+      <address1 />
+      <zip2 />
+      <address2 />
+      <zip3 />
+      <address3 />
+      <destination />
+      <tel />
+      <tel2 />
+      <tel3 />
+      <fax />
+      <email />
+    </contact>
+    <age-whenapo />
+    <multi-attr />
+    <locale />
+    <nationality />
+    <remarks />
+    <status>
+      <emphasis_information>
+        <f_allergy />
+        <f_hbv />
+        <f_hcv />
+        <f_hiv />
+        <f_syphilitis />
+        <remarks />
+      </emphasis_information>
+      <medical_information>
+        <f_pacemaker />
+        <f_internal_metal />
+        <f_care />
+        <f_blood_difficult />
+        <remarks />
+      </medical_information>
+      <personal_information>
+        <f_vip />
+        <f_claim />
+        <f_prolix />
+        <remarks />
+      </personal_information>
+    </status>
+  </examinee>
+</root>

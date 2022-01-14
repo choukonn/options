@@ -1,0 +1,45 @@
+<root>
+  <appoint>
+    <comments>
+      <comment>
+        <f_menstruation />
+        <f_aftermeal />
+      </comment>
+    </comments>
+    <payments>
+      <payment>
+        <f_payment />
+        <payment_info />
+        <discount />
+        <f_discount />
+        <discount_ins />
+        <f_discount_ins />
+        <discount_org />
+        <f_discount_org />
+        <p_amount />
+      </payment>
+    </payments>
+    <appoint_info>
+      <exam_type />
+      <psid_appoint />
+      <psid_me />
+      <inspection_date />
+      <nationality_type />
+      <locker_no />
+      <meal_info>
+        <meal_1st>
+          <lunch />
+          <dinner />
+        </meal_1st>
+        <meal_2nd>
+          <lunch />
+          <dinner />
+        </meal_2nd>
+        <meal_3rd>
+          <lunch />
+        </meal_3rd>
+      </meal_info>
+      <comment />
+    </appoint_info>
+  </appoint>
+</root>

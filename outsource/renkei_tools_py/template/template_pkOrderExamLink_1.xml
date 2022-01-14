@@ -1,0 +1,19 @@
+<pkorderinfo>
+  <orderinfo>
+    <key />
+  </orderinfo>
+  <examineeinfo>
+    <id />
+    <name />
+    <kana />
+    <sex />
+    <birthday />
+    <age />
+    <memo />
+    <symbol />
+    <country />
+    <other>
+      <grade />
+    </other>
+  </examineeinfo>
+</pkorderinfo>

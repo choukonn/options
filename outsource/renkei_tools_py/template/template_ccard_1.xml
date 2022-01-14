@@ -1,0 +1,77 @@
+<root>
+  <ccard>
+    <no />
+    <d_valid />
+    <insurer>
+      <no />
+      <name />
+    </insurer>
+    <contract-agency>
+      <no />
+      <name />
+    </contract-agency>
+    <payment-agency>
+      <no />
+      <name />
+    </payment-agency>
+    <s_medexams>
+      <s_medexam>
+        <s_class>1</s_class>
+        <charge>
+          <type>1</type>
+          <examinee>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+          </examinee>
+          <insurer>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+            <value_limit />
+          </insurer>
+        </charge>
+      </s_medexam>
+      <s_medexam>
+        <s_class>2</s_class>
+        <charge>
+          <type>1</type>
+          <examinee>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+          </examinee>
+          <insurer>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+            <value_limit />
+          </insurer>
+        </charge>
+      </s_medexam>
+      <s_medexam>
+        <s_class>3</s_class>
+        <charge>
+          <type>1</type>
+          <examinee>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+          </examinee>
+          <insurer>
+            <s_exam>1001</s_exam>
+            <sid_exam>6</sid_exam>
+            <rate />
+            <value />
+            <value_limit />
+          </insurer>
+        </charge>
+      </s_medexam>
+    </s_medexams>
+  </ccard>
+</root>

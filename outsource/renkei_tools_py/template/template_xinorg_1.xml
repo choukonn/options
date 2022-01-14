@@ -1,0 +1,15 @@
+<root>
+  <xinorg>
+    <n_examinee />
+    <b_examinee />
+    <s_examinee />
+    <sid_industry />
+    <sid_jobtype />
+    <sid_post />
+    <d_hired />
+    <remarks />
+    <f_examinee />
+    <n_department />
+    <s_department />
+  </xinorg>
+</root>

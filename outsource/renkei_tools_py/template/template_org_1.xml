@@ -1,0 +1,47 @@
+<root>
+  <org>
+    <sid />
+    <s_org />
+    <n_org />
+    <n_org2 />
+    <sid_aorg />
+    <sid_dorg />
+    <name />
+    <name-kana />
+    <abbr />
+    <address>
+      <zip />
+      <adr1 />
+      <adr2 />
+      <adr3 />
+      <adr4 />
+    </address>
+    <zip1 />
+    <address1 />
+    <tel />
+    <tel2 />
+    <fax />
+    <responsible>
+      <staff_name />
+    </responsible>
+    <remarks />
+    <invoice>
+      <sid_org />
+      <name />
+      <name-kana />
+      <address>
+        <zip />
+        <adr1 />
+        <adr2 />
+        <adr3 />
+        <adr4 />
+      </address>
+      <invoice_zip />
+      <invoice_address />
+      <tel />
+      <tel2 />
+    </invoice>
+    <departments />
+    <f_tokken />
+  </org>
+</root>

@@ -1,0 +1,159 @@
+/**
+ * Serialize用KEYマッピング処理定義
+ * 
+ * キー定義方法
+ * データをそのまま返す場合は未定義でよい。function(col, data){ return data; } で処理される。
+ * xmlの構造を定義する場合はエンティティ階層をドットネイション化する。
+ * xmlの構造で内部配列型のデータの定義は配列になるエンティティ部の直後に.%を追加する。（{d: opts[{ c: xx, z: yy }]} ⇒ d.opts.%.c, d.opts.%.z）
+ * ※ 内部配列型定義に於いて、「.%.」化せずに、そのまま配列インデックス値で定義「.1.等」することも可能。（この場合は数値で定義されている処理が%定義より優先的に使用される）（d.opts.%.c ⇒ d.opts.1.c）
+ */
+var funcs = {
+//		'm.examinee.id'
+		'm.examinee.name': function(col, data){ return col.delimiter == 'TAB' ? data.replaceAll('\t', ' ') : data; },
+//		'm.examinee.name.last'
+//		'm.examinee.name.first'
+		'm.examinee.name-kana': function(col, data){ return col.delimiter == 'TAB' ? data.replaceAll('\t', ' ') : data; },
+//		'm.examinee.name-kana.last'
+//		'm.examinee.name-kana.first'
+		'm.examinee.birthday': function(col, data){
+			//TODO 和暦対応
+			var d = new Date(data);
+			return d.format('yyyy-mm-dd');
+		},
+		'm.examinee.sex': function(col, data){
+			var m = map(col, data);
+			switch(m){
+			case 'MAIL': return 1;
+			case 'FEMAIL': return 2;
+			default: return 0;
+			}
+		},
+		'm.examinee.bloodtype': function(col, data){
+			var m = map(col, data);
+			switch(m){
+			case 'A_PLUS': return 'A ＋';
+			case 'A_MINUS': return 'A －';
+			case 'B_PLUS': return 'B ＋';
+			case 'B_MINUS': return 'B －';
+			case 'O_PLUS': return 'O ＋';
+			case 'O_MINUS': return 'O －';
+			case 'AB_PLUS': return 'AB ＋';
+			case 'AB_MINUS': return 'AB －';
+			default: return '';
+			}
+		},
+		'm.examinee.bloodtype.abo': function(col, data){
+			var m = map(col, data);
+			switch(m){
+			case 'A': return 'A';
+			case 'B': return 'B';
+			case 'O': return 'O';
+			case 'AB': return 'AB';
+			default: return '';
+			}
+		},
+		'm.examinee.bloodtype.rh': function(col, data){
+			var m = map(col, data);
+			switch(m){
+			case 'PLUS': return '＋';
+			case 'MINUS': return '－';
+			default: return '';
+			}
+		},
+		'm.examinee.contact.address.zip': function(col, data){
+			data = data.toSingleByte();
+			var n = data.split('-');
+			for(var i=0,li=n.length,d;i<li;++i){
+				d = n[i];
+				if(!d.isNumber()){ return ''; }
+			}
+			return data;
+		},
+		'm.examinee.contact.address.adr': function(col, data){ return data.split(col.delimiter == 'TAB' ? '\t':' '); },
+//		'm.examinee.contact.address.adr1'
+//		'm.examinee.contact.address.adr2'
+//		'm.examinee.contact.address.adr3'
+//		'm.examinee.contact.address.adr4'
+		'm.examinee.contact.tel': function(col, data){
+			data = data.toSingleByte();
+			var n = data.split('-');
+			for(var i=0,li=n.length,d;i<li;++i){
+				d = n[i];
+				if(!d.isNumber()){ return ''; }
+			}
+			return data;
+		},
+		'm.examinee.contact.fax': function(col, data){
+			data = data.toSingleByte();
+			var n = data.split('-');
+			for(var i=0,li=n.length,d;i<li;++i){
+				d = n[i];
+				if(!d.isNumber()){ return ''; }
+			}
+			return data;
+		},
+		'm.examinee.f_examinee': function(col, data){
+			var m = map(col, data);
+			switch(m){
+			case 'OTHER': return 0;
+//			case 'SELF': return 1;
+			case 'ANY': return 2;
+			default: return 1; // default は”本人”で
+			}
+		},
+		'm.examinee.multi-attr': function(col, data){ return col.delimiter == 'SPACE' ? data.replaceAll(' ', '\t') : data; },
+		
+		// T_APPOINT.xml_ccard -------------------------------------------------------------------------------------------------------------------------- 
+//		't.appoint.xml_ccard.ccard.no',
+		't.appoint.xml_ccard.ccard.d_valid': function(col, data){
+			var d = new Date(data);
+			return d.format('yyyy-mm-dd');
+		},
+//	't.appoint.xml_ccard.ccard.insurer.no',
+//	't.appoint.xml_ccard.ccard.insurer.name',
+//	't.appoint.xml_ccard.ccard.contract-agency.no',
+//	't.appoint.xml_ccard.ccard.contract-agence.name',
+//	't.appoint.xml_ccard.ccard.payment-agency.no',
+//	't.appoint.xml_ccard.ccard.payment-agency.name',
+//	't.appoint.xml_ccard.ccard.s_medexams.s_medexam.%.name',
+		't.appoint.xml_ccard.ccard.s_medexams.s_medexam.%.charge.examinee.rate': function(col, data){
+			data = data.toSingleByte();
+			return data.isNumber() ? data : '';
+		},
+		't.appoint.xml_ccard.ccard.s_medexams.s_medexam.%.charge.examinee.value': function(col, data){
+			data = data.toSingleByte().replaceAll(',', '');
+			return data.isNumber() ? data.number()+'' : '';
+		},
+		't.appoint.xml_ccard.ccard.s_medexams.s_medexam.%.charge.insurer.value-uplimit': function(col, data){
+			data = data.toSingleByte().replaceAll(',', '');
+			return data.isNumber() ? data.number()+'' : '';
+		}
+};
+
+
+var map = function(col, data){
+	if(!col.maps || !col.maps.map){ return ''; }
+	var m = col.maps.map;
+	for(var i=0,li=m.length,v;i<li;++i){
+		v = m[i];
+		if(v.value == data){ return v.type; }
+	}
+	return '';
+};
+
+module.exports = function(key){
+	var func = funcs[key];
+	if(func && Bit.isFunction(func)){ return func; }
+	var ks = key.replace(/\.\d+\./g, '.%.');
+	func = funcs[ks];
+	if(func && Bit.isFunction(func)){ return func; }
+	return function(col, data){ return data; };
+};
+
+//module.exports = Bit.createClass(undefined, undefined,	{
+//	init: function(config){
+//		this.init.apply(this, arguments);
+//	},
+//	exec: function(req, res, next, config, ret){
+//	}
+//});

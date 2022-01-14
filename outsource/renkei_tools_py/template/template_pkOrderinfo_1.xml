@@ -1,0 +1,43 @@
+<pkorderinfo>
+  <orderinfo>
+    <key />
+    <no />
+    <date />
+    <time />
+    <status />
+  </orderinfo>
+  <examineeinfo>
+    <no />
+    <id />
+    <name />
+    <kana />
+    <sex />
+    <birthday />
+    <age />
+    <course />
+    <memo />
+    <symbol />
+    <me_type />
+    <country />
+    <language />
+    <other>
+      <remarks />
+      <grade />
+      <meal_info>
+        <lunch />
+        <dinner />
+        <comment />
+      </meal_info>
+    </other>
+  </examineeinfo>
+  <daidaiinfo>
+    <sid_appoint />
+    <sid_morg />
+    <s_upd />
+    <dt_upd />
+    <psid_appoint />
+    <psid_me />
+    <inspection_date />
+  </daidaiinfo>
+  <inspections />
+</pkorderinfo>
